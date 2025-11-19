@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Department of Artificial Intelligence & Machine Learning - Official Website" />
+  <title>AIML Department</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-Xx8gQ5uM2b9Oe5mHf1CqD0rXyF8L3m0cF6lq0c7mJ9V9gk6o0QbZxJf7a4m7k/8wQf1H5lq0c7mJ9V9gk6o0QbZxJf7a4m7k/8wQf1H5lq0a0wQk9Nw6FqO3g==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Loading AIML Department...</div>
+    </div>
+  </div>
+  <!-- Welcome Popup -->
+  <div id="welcomePopup" class="welcome-popup">
+    <div class="popup-overlay"></div>
+    <div class="popup-content">
+      <button class="popup-close" id="closePopup" aria-label="Close welcome popup">
+        <i class="fa-solid fa-times"></i>
+      </button>
+      <div class="popup-header">
+        <img src="guru.jpg" alt="AIML Department Logo" class="popup-logo">
+        <h2>Welcome to AIML Department!</h2>
+        <p class="popup-subtitle">Guru Nanak Dev Engineering College, Bidar</p>
+      </div>
+      <div class="popup-body">
+        <div class="welcome-message">
+          <p>Welcome to the Department of Artificial Intelligence & Machine Learning! We're excited to have you explore our world-class programs, cutting-edge research, and innovative learning environment.</p>
+          
+          <div class="popup-highlights">
+            <div class="highlight-item">
+              <i class="fa-solid fa-user-graduate"></i>
+              <span><strong>420+</strong> Students</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-user-tie"></i>
+              <span><strong>24+</strong> Expert Faculty</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fa-solid fa-chart-line"></i>
+              <span><strong>95%</strong> Placement Rate</span>
+            </div>
+          </div>
+          
+          <p class="popup-cta-text">Ready to discover the future of AI & ML?</p>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <button class="btn btn-primary" id="exploreBtn">Explore Department</button>
+        <button class="btn btn-ghost" id="closePopupBtn">Maybe Later</button>
+      </div>
+    </div>
+  </div>
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <img src="guru.jpg" alt="Guru Nanak Dev Engineering College - AIML Department Logo" class="brand-logo-img" />
+        <div class="brand-text">
+          <strong>AIML</strong>
+          <small>Department</small>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#mission">Mission & Vision</a>
+        <a href="#faculty">Faculty</a>
+        <a href="#students">Students</a>
+        <a href="#activities">Activities</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero" style="background-image: url('assets/background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="hero-bg">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+      <div class="grid-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Department of <span class="grad">Artificial Intelligence</span> & <span class="grad">Machine Learning</span>
+        </h1>
+        <p class="hero-subtitle">
+          Where curiosity meets innovation. Learn, build, and research the future of intelligent systems with industry-driven curriculum and hands-on labs.
+        </p>
+        <div class="hero-cta">
+          <a href="#about" class="btn btn-primary">Explore Department</a>
+          <a href="#contact" class="btn btn-ghost">Contact Us</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat" data-counter="420">0</span>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" data-progress="85"></div>
+            </div>
+            <span class="label"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i> Students</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat" data-counter="24">0</span>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" data-progress="75"></div>
+            </div>
+            <span class="label"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> Faculty</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat" data-counter="6">0</span>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" data-progress="60"></div>
+            </div>
+            <span class="label"><i class="fa-solid fa-flask" aria-hidden="true"></i> Labs</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat" data-counter="95">0</span>
+            <div class="stat-progress">
+              <div class="stat-progress-bar" data-progress="95"></div>
+            </div>
+            <span class="label"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Placement %</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="floating-badges">
+          <div class="badge">Deep Learning</div>
+          <div class="badge">NLP</div>
+          <div class="badge">Data Science</div>
+          <div class="badge">MLOps</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" focusable="false" role="img">
+        <path d="M0,64 C240,100 480,0 720,32 C960,64 1200,96 1440,48 L1440,100 L0,100 Z" fill="rgba(11,16,32,0.95)"></path>
+      </svg>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About">
+      <span class="dot"></span>
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- About Us -->
+  <section id="about" class="about-section">
+    <div class="about-background">
+      <div class="ai-particles"></div>
+      <div class="gradient-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="about-content">
+        <div class="about-header">
+          <h2 class="about-title glowing-text">About Us</h2>
+          <div class="tagline-container">
+            <span class="lightbulb-icon">💡</span>
+            <span class="tagline-text"><strong>Empowering Intelligence Through Innovation.</strong></span>
+          </div>
+        </div>
+        
+        <div class="about-description">
+          <p class="about-intro">
+            Artificial Intelligence (AI) and Machine Learning (ML) Course is rapidly growing fields in computer science that are revolutionizing the way we interact with technology. AI involves creating intelligent systems that can perform tasks that typically require human-like intelligence. ML, on the other hand, is a subset of AI that involves developing algorithms and models that can learn from data and make predictions or decisions based on that learning.
+          </p>
+          
+          <div class="about-highlights">
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+              </div>
+              <div class="highlight-content">
+                <h3>Our Journey</h3>
+                <p>Our exciting journey began in 2021, with a sanctioned student strength of 60. The AIML Department proudly boasts that 50% of the faculty members have either completed or are pursuing their Ph.D., guiding seven research scholars in their respective areas of expertise.</p>
+              </div>
+            </div>
+            
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div class="highlight-content">
+                <h3>Student Association</h3>
+                <p>The department also has a unique student association, "pAIthon," which actively organizes technical, co-curricular, and cultural activities to ensure the overall development of students.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Department Gallery -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our Department</h2>
+        <p>Glimpses of our vibrant AIML department, showcasing our facilities, events, and collaborative learning environment.</p>
+      </div>
+      <div class="department-gallery">
+        <div class="gallery-track" aria-live="polite">
+          <div class="gallery-slide active">
+            <img src="assets/img/gallery/department-photo-1.jpg" alt="AIML Department Photo 1">
+            <div class="gallery-caption">
+              <h4>AIML Department</h4>
+              <p>Our state-of-the-art department facilities</p>
+            </div>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/img/gallery/department-photo-2.png" alt="AIML Department Photo 2">
+            <div class="gallery-caption">
+              <h4>Learning Environment</h4>
+              <p>Modern classrooms and learning spaces</p>
+            </div>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/img/gallery/department-photo-3.jpg" alt="AIML Department Photo 3">
+            <div class="gallery-caption">
+              <h4>Research Facilities</h4>
+              <p>Advanced labs for AI and ML research</p>
+            </div>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/img/gallery/department-photo-4.jpg" alt="AIML Department Photo 4">
+            <div class="gallery-caption">
+              <h4>Collaborative Spaces</h4>
+              <p>Areas designed for teamwork and innovation</p>
+            </div>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/img/gallery/department-photo-5.jpg" alt="AIML Department Photo 5">
+            <div class="gallery-caption">
+              <h4>Department Activities</h4>
+              <p>Students and faculty engaged in learning</p>
+            </div>
+          </div>
+          <div class="gallery-slide">
+            <img src="assets/img/gallery/department-photo-6.png" alt="AIML Department Photo 6">
+            <div class="gallery-caption">
+              <h4>Academic Excellence</h4>
+              <p>Celebrating achievements and milestones</p>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <button class="gallery-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="gallery-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="gallery-dots">
+          <button class="dot active" data-slide="0" aria-label="Show image 1"></button>
+          <button class="dot" data-slide="1" aria-label="Show image 2"></button>
+          <button class="dot" data-slide="2" aria-label="Show image 3"></button>
+          <button class="dot" data-slide="3" aria-label="Show image 4"></button>
+          <button class="dot" data-slide="4" aria-label="Show image 5"></button>
+          <button class="dot" data-slide="5" aria-label="Show image 6"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section id="mission" class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Mission & Vision</h2>
+        <p>We shape responsible technologists with a strong foundation in AI who contribute to society through innovation and ethics.</p>
+      </div>
+      <div class="cards three">
+        <article class="card">
+          <h3>Vision</h3>
+          <p>To be a premier center of excellence in Artificial Intelligence and Machine Learning through interdisciplinary partnerships and by making positive contributions to the community, organizations, and society as a whole.</p>
+        </article>
+        <article class="card">
+          <h3>Mission</h3>
+          <p>The mission of the Department of Artificial Intelligence and Machine Learning, Guru Nanak Dev Engineering College, Bidar, is to:</p>
+          <ul class="list">
+            <li><strong>M1:</strong> Impart knowledge in cutting-edge Artificial Intelligence technologies in line with industrial standards.</li>
+            <li><strong>M2:</strong> Promote innovative research and development in Artificial Intelligence and Machine Learning, and serve the needs of society through collaboration with industries and allied organizations.</li>
+            <li><strong>M3:</strong> Produce successful engineering graduates specialized in AI/ML who uphold personal, professional, and ethical responsibilities, with a commitment to lifelong learning.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Program Specific Outcomes (PSOs)</h3>
+          <ul class="list">
+            <li><strong>PSO 1:</strong> Apply concepts from core areas of Artificial Intelligence and Machine Learning — such as Data Structures, Database Systems, Operating Systems, Networking, and Intelligent Systems — to solve real-world and future-oriented problems.</li>
+            <li><strong>PSO 2:</strong> Develop automated solutions for real-world problems through laboratory experiments, projects, and internships.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section id="leadership" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Leadership</h2>
+        <p>Our leadership guides the department with vision and dedication.</p>
+      </div>
+      <div class="faculty-grid">
+        <!-- Place leader photos in assets/img/leadership/ and update file names as needed -->
+        <article class="faculty-card">
+          <img src="assets/img/leadership/chairman.jpg" alt="Chairman portrait">
+          <div class="info">
+            <h3>Dr. Sardar Balbir Singh</h3>
+            <p class="role">Chairman</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets/img/leadership/vice-chairman.jpg" alt="Vice Chairperson portrait">
+          <div class="info">
+            <h3>Dr. Reshma Kaur</h3>
+            <p class="role">Vice Chairperson</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets/img/leadership/principal2.jpg" alt="Principal portrait">
+          <div class="info">
+            <h3>Dr. Veena S. Soraganvi</h3>
+            <p class="role">Principal</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets/img/leadership/director.jpg" alt="Director">
+          <div class="info">
+            <h3>Col. Ravideep Singh</h3>
+            <p class="role">Director Administration</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty -->
+  <section id="faculty" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our Faculty</h2>
+        <p>Meet our experienced professors, associate and assistant professors guiding students towards excellence.</p>
+      </div>
+      <div class="faculty-grid">
+        <!-- Temporary placeholder photos from Unsplash. Replace src with your real images anytime. -->
+        <article class="faculty-card">
+          <img src="assets/img/faculty/hod-aiml.jpg" alt="Dr. Dayanand portrait">
+          <div class="info">
+            <h3>Dr. Dayanand</h3>
+            <p class="role">Head of Department (HOD)</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets/img/faculty/jasmineet-kaur.jpg" alt="Dr. Jasmineet Kaur portrait">
+          <div class="info">
+            <h3>Dr. Jasmineet Kaur</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets\img\faculty\nitraviti mam.png" alt="Prof. Netravati Sawale portrait">
+          <div class="info">
+            <h3>Prof. Netravati Sawale</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets\img\faculty\Rony preetam prakash.png" alt="Prof. Rony Preetam portrait">
+          <div class="info">
+            <h3>Prof. Rony Preetam</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets\img\faculty\shruti patil.png" alt="Prof. Shruti Patil portrait">
+          <div class="info">
+            <h3>Prof. Shruti Patil</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets\img\faculty\ashwini mam.png" alt="Prof. Ashwini Biradar portrait">
+          <div class="info">
+            <h3>Prof. Ashwini Biradar</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets\img\faculty\nasreen mam.png" alt="Prof. Nasreen Kausar portrait">
+          <div class="info">
+            <h3>Prof. Nasreen Kausar</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets\img\faculty\akash sir.png" alt="Prof. Akash sir portrait">
+          <div class="info">
+            <h3>Prof. Akash sir</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+        <article class="faculty-card">
+          <img src="assets\img\faculty\sony mam.png" alt="Prof. madam portrait">
+          <div class="info">
+            <h3>Prof. madam</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+         <article class="faculty-card">
+          <img src="" alt="Prof. madam portrait">
+          <div class="info">
+            <h3>Prof. madam</h3>
+            <p class="role">Assistant Professor</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Students & Toppers -->
+  <section id="students" class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Students & Toppers</h2>
+        <p>Celebrating excellence and achievements of our students.</p>
+      </div>
+
+      <div class="toppers">
+        <div class="topper-track" aria-live="polite">
+          <div class="topper-card">
+            <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop" alt="Topper 1">
+            <div class="meta">
+              <h4>1.
+
+PRACHI KULKARNI
+
+(3GN23AI036)</h4>
+              <p>90.78</p>
+            </div>
+          </div>
+          <div class="topper-card">
+            <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" alt="Topper 2">
+            <div class="meta">
+              <h4>2.
+
+PRAVEEN SEERI
+
+(3GN23AI038)</h4>
+              <p>87.56</p>
+            </div>
+          </div>
+          <div class="topper-card">
+            <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=800&auto=format&fit=crop" alt="Topper 3">
+            <div class="meta">
+              <h4>3.
+
+NIKITA DANADIN
+
+(3GN23AI032)</h4>
+              <p>87.00</p>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="cards three mt-lg">
+        <article class="card">
+          <h3>Clubs</h3>
+          <p>Join AI clubs and communities for hackathons, meetups, and projects.</p>
+          <a href="#activities" class="link">Explore clubs <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+        <article class="card">
+          <h3>Placements</h3>
+          <p>Our students are placed in top companies with competitive packages.</p>
+          <a href="#achievements" class="link">See achievements <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+        <article class="card">
+          <h3>Magazine</h3>
+          <p>Read our yearly department magazine highlighting student work.</p>
+          <a href="#activities" class="link">Read now <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Lists (Stacks) -->
+  <section id="stacks" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Student Lists</h2>
+        <p>Click on any year to view the student list. Use your browser's back button to return to the website.</p>
+      </div>
+      <div class="stack-grid">
+        <article class="stack-box">
+          <header><h3><a href="aiml2021_22.pdf" target="_blank" rel="noopener noreferrer">First Year</a></h3></header>
+          <div class="stack-content" aria-live="polite">
+            <p>AIML Batch 2021_22</p>
+            <a href="aiml2021_22.pdf" download="AIML_Students_2021-22.pdf" class="download-btn">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </article>
+        <article class="stack-box">
+          <header><h3><a href="aiml2022_23.pdf" target="_blank" rel="noopener noreferrer">Second Year</a></h3></header>
+          <div class="stack-content" aria-live="polite">
+            <p>AIML Batch 2022_23</p>
+            <a href="aiml2022_23.pdf" download="AIML_Students_2022-23.pdf" class="download-btn">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </article>
+        <article class="stack-box">
+          <header><h3><a href="aiml2023_24.pdf" target="_blank" rel="noopener noreferrer">Third Year</a></h3></header>
+          <div class="stack-content" aria-live="polite">
+            <p>AIML Batch 2023_24</p>
+            <a href="aiml2023_24.pdf" download="AIML_Students_2023-24.pdf" class="download-btn">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </article>
+        <article class="stack-box">
+          <header><h3><a href="aiml2024_25.pdf" target="_blank" rel="noopener noreferrer">Fourth Year</a></h3></header>
+          <div class="stack-content" aria-live="polite">
+            <p>AIML Batch 2024_25</p>
+            <a href="aiml2024_25.pdf" download="AIML_Students_2024-25.pdf" class="download-btn">
+              <i class="fa-solid fa-download"></i> Download
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section id="activities" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Department Activities</h2>
+        <p>Workshops, guest lectures, hackathons, and more throughout the year.</p>
+      </div>
+      <div class="activity-grid">
+        <article class="activity-card">
+          <img src="assets/img 3.jpeg" alt="Deep Learning Workshop">
+          <div class="content">
+            <h3>Deep Learning Workshop</h3>
+            <p>Hands-on sessions on CNNs and transfer learning.</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/img.jpeg" alt="AI Hackathon">
+          <div class="content">
+            <h3>AI Hackathon</h3>
+            <p>48-hour challenge building end-to-end ML solutions.</p>
+          </div>
+        </article>
+        <article class="activity-card">
+          <img src="assets/img 2.jpeg" alt="Industry Talks">
+          <div class="content">
+            <h3>Industry Talks</h3>
+            <p>Leaders from AI startups and MNCs share insights.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements" class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Achievements</h2>
+        <p>Recognitions, awards, and student accomplishments.</p>
+      </div>
+      <div class="cards three">
+        <article class="card">
+          <img src="assets/img 4.jpeg" alt="Smart India Hackathon Winners">
+        </article>
+        <article class="card">
+          <img src="assets/img 5.jpeg" alt="Research Publications">
+        </article>
+        <article class="card">
+          <img src="assets/img 6.jpeg" alt="Innovation Grants">
+        </article>
+        <article class="card">
+          <img src="assets/img 7.jpeg" alt="Achievement Image 4">
+        </article>
+        <article class="card">
+          <img src="assets/img 8.jpeg" alt="Achievement Image 5">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container contact">
+      <div>
+        <div class="section-head">
+          <h2>Contact Us</h2>
+          <p>Reach out for admissions, collaborations, and general inquiries.</p>
+        </div>
+        <ul class="contact-list" id="contactList">
+          <!-- Static fallback content - will be replaced by contact-loader.js if database is available -->
+          <li><i class="fa-solid fa-location-dot"></i> Guru Nanak Dev Engineering College Mailoor Road,Bidar,KA-585403</li>
+          <li><i class="fa-solid fa-phone"></i> +918482-226949</li>
+          <li><i class="fa-solid fa-envelope"></i>principalgndecb@gmail.com, 
+principal@gndecb.ac.in</li>
+        </ul>
+      </div>
+      <form name="contact" class="contact-form" id="contactForm">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="form-row">
+          <label>Full Name
+            <input name="name" id="contactFormName" required placeholder="Your name" />
+          </label>
+          <label>Email
+            <input type="email" name="email" id="contactFormEmail" required placeholder="you@example.com" />
+          </label>
+        </div>
+        <label>Message
+          <textarea name="message" id="contactFormMessageText" rows="5" required placeholder="How can we help?"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+        <div id="contactFormStatus" style="margin-top: 15px; display: none;"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Floating CTA -->
+  <div class="floating-cta" id="floatingCta">
+    <a href="#contact" class="btn btn-primary">
+      <i class="fa-solid fa-message"></i>
+      Get in Touch
+    </a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer">
+      <p>© <span id="year"></span> AIML Department — All rights reserved.</p>
+      <div class="socials">
+        <a aria-label="Facebook" href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a aria-label="Twitter" href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a aria-label="LinkedIn" href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a aria-label="YouTube" href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-oZo4h6DW7cPTxqf2eZk3nN0r9t1Q1o0Cql0S4e2JcY0Vf6k9nmkPZr9oR5H0v6y1mFQeT3zH9m5H0jkHqA5fVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-o0Lyv9XgI8Ew5p2Lz+2dR7h6ZQ9Yx2xzzrTtL8kzVYlY8u0rXhW6e9QkCvQk0H0Sg6uE6Jp1g1a0S1P1oQnY8rQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <!-- Supabase JS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin/supabase-config.js"></script>
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/faculty-loader.js"></script>
+  <script src="assets/js/contact-loader.js"></script>
+  <script src="assets/js/contact-form.js"></script>
+</body>
+</html>

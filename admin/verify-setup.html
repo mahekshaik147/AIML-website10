@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supabase Setup Verification - AIML Department</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      padding: 30px;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+    }
+    .status-grid {
+      display: grid;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .status-item {
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s;
+    }
+    .status-item.checking {
+      border-color: #ffa500;
+      background: #fff8e1;
+    }
+    .status-item.success {
+      border-color: #4caf50;
+      background: #e8f5e9;
+    }
+    .status-item.error {
+      border-color: #f44336;
+      background: #ffebee;
+    }
+    .status-icon {
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .status-item.checking .status-icon {
+      background: #ffa500;
+      color: white;
+      animation: spin 1s linear infinite;
+    }
+    .status-item.success .status-icon {
+      background: #4caf50;
+      color: white;
+    }
+    .status-item.error .status-icon {
+      background: #f44336;
+      color: white;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .status-content {
+      flex: 1;
+    }
+    .status-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .status-message {
+      font-size: 14px;
+      color: #666;
+    }
+    .error-details {
+      margin-top: 10px;
+      padding: 10px;
+      background: #fff;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #d32f2f;
+    }
+    .fix-instructions {
+      margin-top: 10px;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 5px;
+      border-left: 4px solid #2196f3;
+    }
+    .fix-instructions h4 {
+      margin-bottom: 10px;
+      color: #1976d2;
+    }
+    .fix-instructions ol {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+    .fix-instructions code {
+      background: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 10px;
+    }
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #5568d3;
+    }
+    .btn-secondary {
+      background: #e0e0e0;
+      color: #333;
+    }
+    .btn-secondary:hover {
+      background: #d0d0d0;
+    }
+    .actions {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 2px solid #e0e0e0;
+    }
+    .summary {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      background: #f5f5f5;
+    }
+    .summary.success {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+    }
+    .summary.error {
+      background: #ffebee;
+      border: 2px solid #f44336;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <span>🔍</span>
+      Supabase Setup Verification
+    </h1>
+    <p class="subtitle">Checking your database tables and storage buckets...</p>
+
+    <div class="status-grid" id="statusGrid">
+      <!-- Status items will be added here -->
+    </div>
+
+    <div class="summary" id="summary" style="display: none;">
+      <h3 id="summaryTitle"></h3>
+      <p id="summaryMessage"></p>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="runVerification()">🔄 Run Verification Again</button>
+      <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">← Back to Dashboard</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script>
+    const checks = [
+      { id: 'leadership-table', name: 'Leadership Table', type: 'table' },
+      { id: 'faculty-table', name: 'Faculty Table', type: 'table' },
+      { id: 'activities-table', name: 'Activities Table', type: 'table' },
+      { id: 'achievements-table', name: 'Achievements Table', type: 'table' },
+      { id: 'gallery-table', name: 'Gallery Table', type: 'table' },
+      { id: 'leadership-photos-bucket', name: 'Leadership Photos Bucket', type: 'bucket' },
+      { id: 'faculty-photos-bucket', name: 'Faculty Photos Bucket', type: 'bucket' },
+      { id: 'activity-images-bucket', name: 'Activity Images Bucket', type: 'bucket' },
+    ];
+
+    function createStatusItem(check) {
+      const item = document.createElement('div');
+      item.className = 'status-item checking';
+      item.id = `status-${check.id}`;
+      item.innerHTML = `
+        <div class="status-icon">⏳</div>
+        <div class="status-content">
+          <div class="status-title">${check.name}</div>
+          <div class="status-message">Checking...</div>
+        </div>
+      `;
+      return item;
+    }
+
+    function updateStatus(checkId, status, message, error = null, fixInstructions = null) {
+      const item = document.getElementById(`status-${checkId}`);
+      if (!item) return;
+
+      item.className = `status-item ${status}`;
+      
+      const icon = item.querySelector('.status-icon');
+      const statusMessage = item.querySelector('.status-message');
+      
+      if (status === 'success') {
+        icon.textContent = '✅';
+        statusMessage.textContent = message || 'Found and working correctly';
+      } else if (status === 'error') {
+        icon.textContent = '❌';
+        statusMessage.textContent = message || 'Not found or not accessible';
+        
+        if (error) {
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'error-details';
+          errorDiv.textContent = error;
+          statusMessage.appendChild(errorDiv);
+        }
+        
+        if (fixInstructions) {
+          const fixDiv = document.createElement('div');
+          fixDiv.className = 'fix-instructions';
+          fixDiv.innerHTML = fixInstructions;
+          statusMessage.appendChild(fixDiv);
+        }
+      }
+    }
+
+    async function checkTable(tableName) {
+      try {
+        const { data, error } = await window.supabase
+          .from(tableName)
+          .select('*')
+          .limit(1);
+        
+        if (error) {
+          if (error.code === 'PGRST116' || error.message?.includes('does not exist') || error.message?.includes('relation')) {
+            return { exists: false, error: 'Table does not exist' };
+          }
+          return { exists: false, error: error.message };
+        }
+        
+        return { exists: true };
+      } catch (error) {
+        return { exists: false, error: error.message };
+      }
+    }
+
+    async function checkBucket(bucketName) {
+      try {
+        const { data, error } = await window.supabase.storage.listBuckets();
+        
+        if (error) {
+          return { exists: false, error: error.message };
+        }
+        
+        const bucket = data.find(b => b.id === bucketName);
+        if (!bucket) {
+          return { exists: false, error: 'Bucket does not exist' };
+        }
+        
+        if (!bucket.public) {
+          return { exists: true, error: 'Bucket exists but is not public' };
+        }
+        
+        return { exists: true, public: true };
+      } catch (error) {
+        return { exists: false, error: error.message };
+      }
+    }
+
+    async function runVerification() {
+      const statusGrid = document.getElementById('statusGrid');
+      statusGrid.innerHTML = '';
+      
+      checks.forEach(check => {
+        statusGrid.appendChild(createStatusItem(check));
+      });
+
+      let successCount = 0;
+      let errorCount = 0;
+
+      for (const check of checks) {
+        if (check.type === 'table') {
+          const tableName = check.id.replace('-table', '');
+          const result = await checkTable(tableName);
+          
+          if (result.exists) {
+            updateStatus(check.id, 'success', 'Table exists and is accessible');
+            successCount++;
+          } else {
+            let fixInstructions = '';
+            if (tableName === 'leadership') {
+              fixInstructions = `
+                <h4>How to fix:</h4>
+                <ol>
+                  <li>Go to Supabase Dashboard → <strong>SQL Editor</strong></li>
+                  <li>Open the file: <code>create-leadership-table.sql</code></li>
+                  <li>Copy all SQL code and paste into SQL Editor</li>
+                  <li>Click <strong>Run</strong> button</li>
+                  <li>Refresh this page</li>
+                </ol>
+              `;
+            } else {
+              fixInstructions = `
+                <h4>How to fix:</h4>
+                <ol>
+                  <li>Go to Supabase Dashboard → <strong>SQL Editor</strong></li>
+                  <li>Run the SQL script to create the <code>${tableName}</code> table</li>
+                  <li>Check <code>database-schema.sql</code> for the table definition</li>
+                </ol>
+              `;
+            }
+            
+            updateStatus(check.id, 'error', result.error || 'Table not found', result.error, fixInstructions);
+            errorCount++;
+          }
+        } else if (check.type === 'bucket') {
+          const bucketName = check.id.replace('-bucket', '').replace(/-/g, '-');
+          const result = await checkBucket(bucketName);
+          
+          if (result.exists && result.public) {
+            updateStatus(check.id, 'success', 'Bucket exists and is public');
+            successCount++;
+          } else if (result.exists && !result.public) {
+            updateStatus(check.id, 'error', 'Bucket exists but is not public. Make it public in Storage settings.', result.error);
+            errorCount++;
+          } else {
+            let fixInstructions = '';
+            if (bucketName === 'leadership-photos') {
+              fixInstructions = `
+                <h4>How to fix:</h4>
+                <ol>
+                  <li>Go to Supabase Dashboard → <strong>Storage</strong></li>
+                  <li>Click <strong>New bucket</strong></li>
+                  <li>Name: <code>leadership-photos</code></li>
+                  <li>Enable <strong>Public bucket</strong></li>
+                  <li>Click <strong>Create bucket</strong></li>
+                  <li>Or run: <code>setup-leadership-photos-bucket.sql</code></li>
+                </ol>
+              `;
+            } else {
+              fixInstructions = `
+                <h4>How to fix:</h4>
+                <ol>
+                  <li>Go to Supabase Dashboard → <strong>Storage</strong></li>
+                  <li>Click <strong>New bucket</strong></li>
+                  <li>Name: <code>${bucketName}</code></li>
+                  <li>Enable <strong>Public bucket</strong></li>
+                  <li>Click <strong>Create bucket</strong></li>
+                </ol>
+              `;
+            }
+            
+            updateStatus(check.id, 'error', result.error || 'Bucket not found', result.error, fixInstructions);
+            errorCount++;
+          }
+        }
+      }
+
+      // Show summary
+      const summary = document.getElementById('summary');
+      const summaryTitle = document.getElementById('summaryTitle');
+      const summaryMessage = document.getElementById('summaryMessage');
+      
+      summary.style.display = 'block';
+      
+      if (errorCount === 0) {
+        summary.className = 'summary success';
+        summaryTitle.textContent = '✅ All Checks Passed!';
+        summaryMessage.textContent = `All ${successCount} items are set up correctly. Your admin panel should work perfectly.`;
+      } else {
+        summary.className = 'summary error';
+        summaryTitle.textContent = `⚠️ ${errorCount} Issue(s) Found`;
+        summaryMessage.textContent = `${successCount} items are working, but ${errorCount} need attention. Follow the instructions above to fix them.`;
+      }
+    }
+
+    // Run verification on page load
+    window.addEventListener('load', () => {
+      if (window.supabase) {
+        runVerification();
+      } else {
+        document.getElementById('statusGrid').innerHTML = `
+          <div class="status-item error">
+            <div class="status-icon">❌</div>
+            <div class="status-content">
+              <div class="status-title">Supabase Not Connected</div>
+              <div class="status-message">Please check your supabase-config.js file</div>
+            </div>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
+
